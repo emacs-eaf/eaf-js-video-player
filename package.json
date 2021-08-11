@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "plyr": "^3.5.10"
+    "plyr": "^3.6.8"
   },
   "devDependencies": {},
   "scripts": {
