@@ -21,12 +21,9 @@
 
 from PyQt5 import QtCore
 from PyQt5.QtCore import QUrl, QTimer
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtGui import QColor
 from core.webengine import BrowserBuffer
-from core.utils import touch, string_to_base64, get_emacs_var
+from core.utils import get_emacs_var
 import os
-import base64
 
 class AppBuffer(BrowserBuffer):
 
