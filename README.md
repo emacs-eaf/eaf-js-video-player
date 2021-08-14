@@ -7,3 +7,22 @@ This repository provides the EAF Video Player (JS) application for the [Emacs Ap
 (add-to-list 'load-path "~/.emacs.d/site-lisp/eaf-js-video-player/")
 (require 'eaf-js-video-player)
 ```
+
+### The keybinding of EAF JS Video Player.
+
+| Key   | Event   |
+| :---- | :------ |
+| `x` | close_buffer |
+| `f` | toggle_fullscreen |
+| `M-g` | exit_fullscreen |
+| `<f12>` | open_devtools |
+| `SPC` | js_toggle_play |
+| `h` | js_backward |
+| `l` | js_forward |
+| `r` | js_restart |
+| `j` | js_decrease_volume |
+| `k` | js_increase_volume |
+| `c--` | zoom_out |
+| `C-=` | zoom_in |
+| `C-0` | zoom_reset |
+
