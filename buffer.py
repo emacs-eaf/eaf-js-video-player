@@ -19,39 +19,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5 import QtCore
 from PyQt5.QtCore import QUrl, QTimer
 from core.webengine import BrowserBuffer
-from core.utils import get_emacs_var
 import os
 
 class AppBuffer(BrowserBuffer):
-
     def __init__(self, buffer_id, url, arguments):
         BrowserBuffer.__init__(self, buffer_id, url, arguments, False)
 
-        self.url = url
-        index_file = os.path.join(os.path.dirname(__file__), "index.html")
-        self.buffer_widget.setUrl(QUrl.fromLocalFile(index_file))
+        self.buffer_widget.loadFinished.connect(self.init_path)
+        self.load_index_html(__file__)
 
-        QTimer.singleShot(500, self.play_video)
+    def init_path(self):
+        self.buffer_widget.eval_js("init(\"{}\");".format(self.url))
 
     def save_session_data(self):
-        return str(self.buffer_widget.execute_js("get_current_time();"))
+        return str(self.buffer_widget.execute_js("getCurrentTime();"))
 
     def restore_session_data(self, session_data):
         self.position = session_data
         QTimer.singleShot(600, self.restore_seek_position)
 
     def restore_seek_position(self):
-        self.buffer_widget.eval_js("set_current_time('{}');".format(self.position))
-
-    def play_video(self):
-        self.buffer_widget.eval_js("play(\"{}\");".format(QUrl.fromLocalFile(self.url).toString()))
-
-    def dark_mode_is_enabled(self):
-        ''' Return bool of whether dark mode is enabled.'''
-        return (get_emacs_var("eaf-js-video-player-dark-mode") == "force" or \
-                get_emacs_var("eaf-js-video-player-dark-mode") == True or \
-                (get_emacs_var("eaf-js-video-player-dark-mode") == "follow" and \
-                 get_emacs_var("eaf-emacs-theme-mode") == "dark"))
+        self.buffer_widget.eval_js("setCurrentTime('{}');".format(self.position))
