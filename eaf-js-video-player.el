@@ -106,10 +106,17 @@
   "The keybinding of EAF JS Video Player."
   :type 'cons)
 
+(defcustom eaf-js-video-extension-list
+  '("avi" "webm" "rmvb" "ogg" "mp4" "mkv" "m4v")
+  "The extension list of video player application."
+  :type 'cons)
+
 (add-to-list 'eaf-app-binding-alist '("js-video-player" . eaf-js-video-player-keybinding))
 
 (setq eaf-js-vide-player-module-path (concat (file-name-directory load-file-name) "buffer.py"))
 (add-to-list 'eaf-app-module-path-alist '("js-video-player" . eaf-js-vide-player-module-path))
+
+(add-to-list 'eaf-app-extensions-alist '("js-video-player" . eaf-js-video-extension-list))
 
 (provide 'eaf-js-video-player)
 
