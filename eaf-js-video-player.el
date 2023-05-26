@@ -107,7 +107,7 @@
   :type 'cons)
 
 (defcustom eaf-js-video-extension-list
-  '("avi" "webm" "rmvb" "ogg" "mp4" "mkv" "m4v")
+  '("webm" "rmvb" "ogg" "mp4" "mkv" "m4v")
   "The extension list of video player application."
   :type 'cons)
 
