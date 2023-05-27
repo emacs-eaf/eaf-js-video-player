@@ -19,9 +19,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt5.QtCore import QUrl, QTimer
+from PyQt6.QtCore import QTimer
 from core.webengine import BrowserBuffer
-import os
 
 class AppBuffer(BrowserBuffer):
     def __init__(self, buffer_id, url, arguments):
