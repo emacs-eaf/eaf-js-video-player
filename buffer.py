@@ -19,8 +19,10 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from PyQt6.QtCore import QTimer
+from core.utils import PostGui
 from core.webengine import BrowserBuffer
+from PyQt6.QtCore import QTimer
+
 
 class AppBuffer(BrowserBuffer):
     def __init__(self, buffer_id, url, arguments):
@@ -29,6 +31,7 @@ class AppBuffer(BrowserBuffer):
         self.buffer_widget.loadFinished.connect(self.init_path)
         self.load_index_html(__file__)
 
+    @PostGui()
     def init_path(self):
         self.buffer_widget.eval_js("init(\"{}\");".format(self.url))
 
