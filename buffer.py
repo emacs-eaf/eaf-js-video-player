@@ -32,7 +32,7 @@ class AppBuffer(BrowserBuffer):
         self.load_index_html(__file__)
 
     @PostGui()
-    def init_path(self):
+    def init_path(self, dummy=None):  # Workaround: add a dummy parameter
         self.buffer_widget.eval_js("init(\"{}\");".format(self.url))
 
     def save_session_data(self):
